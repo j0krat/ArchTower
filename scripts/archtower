@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+
+VERSION="0.3.0-alpha"
+
+show_help() {
+    echo "ArchTower CLI"
+    echo
+    echo "Uso:"
+    echo "  archtower info"
+    echo "  archtower version"
+    echo "  archtower help"
+}
+
+case "$1" in
+    info)
+        echo "=============================="
+        echo "       ArchTower Info"
+        echo "=============================="
+        echo
+        fastfetch
+        echo
+        echo "Dotfiles:"
+        git -C "$HOME/dotfiles" log --oneline -1
+        ;;
+
+    version)
+        echo "ArchTower $VERSION"
+        ;;
+
+    help|"")
+        show_help
+        ;;
+
+    *)
+        echo "Error: comando desconocido: $1"
+        echo
+        show_help
+        exit 1
+        ;;
+esac
