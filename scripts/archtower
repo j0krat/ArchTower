@@ -60,6 +60,28 @@ case "$1" in
 
         df -h / | awk 'NR==2 {print "✓ Disco raíz libre: " $4}'
         free -h | awk '/Mem:/ {print "✓ RAM libre: " $7}'
+	
+	        echo
+
+        echo "Actualizaciones:"
+        updates=$(checkupdates 2>/dev/null | wc -l)
+
+        if [ "$updates" -eq 0 ]; then
+            echo "✓ Sistema: sin actualizaciones pendientes"
+        else
+            echo "⚠ Sistema: $updates actualizaciones pendientes"
+            echo "  Sugerencia: archtower update"
+        fi
+
+        echo
+
+        echo "Dotfiles:"
+        if git -C "$HOME/dotfiles" diff --quiet && git -C "$HOME/dotfiles" diff --cached --quiet; then
+            echo "✓ Dotfiles: sin cambios pendientes"
+        else
+            echo "⚠ Dotfiles: hay cambios sin commit"
+            echo "  Sugerencia: cd ~/dotfiles && git status"
+        fi
         ;;
     *)
         echo "Error: comando desconocido: $1"
