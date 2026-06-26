@@ -1,0 +1,11 @@
+[user]
+	name = j0krat
+	email = joaquin.vejar.261105@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	editor = nano
+[color]
+	ui = auto
+[pull]
+	rebase = false
