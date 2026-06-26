@@ -11,6 +11,7 @@ show_help() {
     echo "  archtower info"
     echo "  archtower version"
     echo "  archtower help"
+    echo "  archtower doctor"
 }
 
 case "$1" in
@@ -32,7 +33,34 @@ case "$1" in
     help|"")
         show_help
         ;;
+	
+    doctor)
+        echo "ArchTower Doctor"
+        echo
 
+        ping -c 1 archlinux.org >/dev/null 2>&1 \
+            && echo "✓ Internet: OK" \
+            || echo "✗ Internet: sin conexión"
+
+        command -v fastfetch >/dev/null 2>&1 \
+            && echo "✓ Fastfetch: instalado" \
+            || echo "✗ Fastfetch: no instalado"
+
+        command -v git >/dev/null 2>&1 \
+            && echo "✓ Git: instalado" \
+            || echo "✗ Git: no instalado"
+
+        nvidia-smi >/dev/null 2>&1 \
+            && echo "✓ NVIDIA: OK" \
+            || echo "✗ NVIDIA: problema detectado"
+
+        systemctl is-active --quiet NetworkManager \
+            && echo "✓ NetworkManager: activo" \
+            || echo "✗ NetworkManager: inactivo"
+
+        df -h / | awk 'NR==2 {print "✓ Disco raíz libre: " $4}'
+        free -h | awk '/Mem:/ {print "✓ RAM libre: " $7}'
+        ;;
     *)
         echo "Error: comando desconocido: $1"
         echo
