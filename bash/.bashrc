@@ -32,3 +32,5 @@ alias weather='curl wttr.in'
 alias iplocal='ip addr show'
 
 alias fast='fastfetch'
+
+export PATH="$HOME/dotfiles/scripts:$PATH"
