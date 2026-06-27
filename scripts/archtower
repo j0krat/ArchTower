@@ -2,91 +2,30 @@
 
 set -e
 
-VERSION="0.3.0-alpha"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+COMMAND="$1"
 
-show_help() {
-    echo "ArchTower CLI"
+if [[ -z "$COMMAND" ]]; then
+    echo "ArchTower"
     echo
     echo "Uso:"
     echo "  archtower info"
-    echo "  archtower version"
-    echo "  archtower help"
     echo "  archtower doctor"
-}
+    echo "  archtower version"
+    exit 0
+fi
 
-case "$1" in
-    info)
-        echo "=============================="
-        echo "       ArchTower Info"
-        echo "=============================="
-        echo
-        fastfetch
-        echo
-        echo "Dotfiles:"
-        git -C "$HOME/dotfiles" log --oneline -1
-        ;;
+COMMAND_FILE="$SCRIPT_DIR/commands/${COMMAND}.sh"
 
-    version)
-        echo "ArchTower $VERSION"
-        ;;
-
-    help|"")
-        show_help
-        ;;
-	
-    doctor)
-        echo "ArchTower Doctor"
-        echo
-
-        ping -c 1 archlinux.org >/dev/null 2>&1 \
-            && echo "✓ Internet: OK" \
-            || echo "✗ Internet: sin conexión"
-
-        command -v fastfetch >/dev/null 2>&1 \
-            && echo "✓ Fastfetch: instalado" \
-            || echo "✗ Fastfetch: no instalado"
-
-        command -v git >/dev/null 2>&1 \
-            && echo "✓ Git: instalado" \
-            || echo "✗ Git: no instalado"
-
-        nvidia-smi >/dev/null 2>&1 \
-            && echo "✓ NVIDIA: OK" \
-            || echo "✗ NVIDIA: problema detectado"
-
-        systemctl is-active --quiet NetworkManager \
-            && echo "✓ NetworkManager: activo" \
-            || echo "✗ NetworkManager: inactivo"
-
-        df -h / | awk 'NR==2 {print "✓ Disco raíz libre: " $4}'
-        free -h | awk '/Mem:/ {print "✓ RAM libre: " $7}'
-	
-	        echo
-
-        echo "Actualizaciones:"
-        updates=$(checkupdates 2>/dev/null | wc -l)
-
-        if [ "$updates" -eq 0 ]; then
-            echo "✓ Sistema: sin actualizaciones pendientes"
-        else
-            echo "⚠ Sistema: $updates actualizaciones pendientes"
-            echo "  Sugerencia: archtower update"
-        fi
-
-        echo
-
-        echo "Dotfiles:"
-        if git -C "$HOME/dotfiles" diff --quiet && git -C "$HOME/dotfiles" diff --cached --quiet; then
-            echo "✓ Dotfiles: sin cambios pendientes"
-        else
-            echo "⚠ Dotfiles: hay cambios sin commit"
-            echo "  Sugerencia: cd ~/dotfiles && git status"
-        fi
-        ;;
-    *)
-        echo "Error: comando desconocido: $1"
-        echo
-        show_help
-        exit 1
-        ;;
-esac
+if [[ -f "$COMMAND_FILE" ]]; then
+    shift
+    bash "$COMMAND_FILE" "$@"
+else
+    echo "Error: comando desconocido: $COMMAND"
+    echo
+    echo "Uso:"
+    echo "  archtower info"
+    echo "  archtower doctor"
+    echo "  archtower version"
+    exit 1
+fi
