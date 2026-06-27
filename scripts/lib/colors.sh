@@ -45,3 +45,7 @@ section() {
     echo -e "${WHITE}$1${RESET}"
     printf '%*s\n' "${#1}" '' | tr ' ' '-'
 }
+
+separator() {
+    printf '%*s\n' "$(tput cols 2>/dev/null || echo 50)" '' | tr ' ' '─'
+}
