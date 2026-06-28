@@ -210,7 +210,7 @@ Sin embargo, cualquier sugerencia, discusión o mejora es bienvenida.
 
 Desarrollado por **Joaquín "j0krat" Vejar**.
 
-Con mucho café, Linux, curiosidad y guía junto a ChatGPT.
+Con mucho café, Linux, curiosidad y ganas de Aprender.
 
 ---
 
