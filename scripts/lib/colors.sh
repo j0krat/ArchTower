@@ -30,6 +30,14 @@ error() {
     echo -e "${RED}✗${RESET} $1"
 }
 
+hint() {
+    echo -e "${CYAN} --> Sugerencia: ${RESET} $1"
+}
+
+detail() {
+    echo "  $1"
+}
+
 info() {
     echo -e "${BLUE}ℹ${RESET} $1"
 }

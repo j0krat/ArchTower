@@ -11,6 +11,12 @@ score=100
 
 system_checks() {
     section "Sistema"
+
+    success "Kernel"
+    detail "  $(get_kernel)"
+    success "Disco"
+    detail "  Uso: $(get_root_usage)"
+
 }
 
 network_checks() {
@@ -18,8 +24,10 @@ network_checks() {
 
     if check_internet; then
         success "Internet"
+	detail "  Conexión Disponible"
     else
         error "Internet"
+	hint "Verifica tu conexión o NetworkManager"
         ((score-=20))
     fi
 }
@@ -29,8 +37,10 @@ driver_checks() {
 
     if check_nvidia; then
         success "NVIDIA"
+	detail "  Driver detectado"
     else
-        warning "NVIDIA no detectada"
+        warning "NVIDIA"
+	hint "Comprueba el controlador instalado"
         ((score-=10))
     fi
 }
@@ -40,8 +50,10 @@ project_checks() {
 
     if command_exists git; then
         success "Git"
+	detail "  Instalado"
     else
         error "Git"
+	hint "Instala Git con: sudo pacman -S git"
         ((score-=10))
     fi
 }
