@@ -120,10 +120,15 @@ Puedes ejecutar ArchTower directamente:
 ./scripts/archtower doctor
 ```
 
-O crear un enlace simbólico para utilizar el comando desde cualquier ubicación:
+Si deseas ejecutar `archtower` desde cualquier ubicación del sistema sin escribir la ruta completa, puedes crear un lanzador global:
 
 ```bash
-sudo ln -s "$PWD/scripts/archtower" /usr/local/bin/archtower
+sudo tee /usr/local/bin/archtower > /dev/null <<EOF
+#!/usr/bin/env bash
+exec "$PWD/scripts/archtower" "\$@"
+EOF
+
+sudo chmod +x /usr/local/bin/archtower
 ```
 
 Comprueba que todo funciona:
@@ -132,28 +137,14 @@ Comprueba que todo funciona:
 archtower version
 ```
 
----
-
-# Primeros pasos
-
-Una vez instalado, puedes comenzar utilizando:
-
-```bash
-archtower version
-```
-
-```bash
-archtower info
-```
+A partir de ese momento podrás ejecutar comandos como:
 
 ```bash
 archtower doctor
-```
-
-```bash
+archtower info
 archtower logs
+archtower version
 ```
-
 ---
 
 # Comandos disponibles
