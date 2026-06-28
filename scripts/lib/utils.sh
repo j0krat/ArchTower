@@ -32,4 +32,6 @@ get_root_usage() {
     df -h / | awk 'NR==2 {print $5}'
 }
 
-
+count_files() {
+    find "$1" -maxdepth 1 -type f | wc -l
+}
