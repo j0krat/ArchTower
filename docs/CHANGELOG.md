@@ -1,5 +1,15 @@
 # ArchTower Changelog
 
+## v0.4.0-alpha
+
+- Refactorización completa de la CLI.
+- Arquitectura modular.
+- Sistema de logs.
+- Nuevo comando `archtower logs`.
+- Refactor de `doctor`.
+- Mejora del sistema de colores.
+- Dispatcher reorganizado.
+
 ## v0.3.0-alpha
 - Se creó la CLI `archtower`.
 - Se agregó `archtower info`.

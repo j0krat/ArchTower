@@ -3,7 +3,7 @@
 ## Prioridad alta
 - Mejorar `archtower doctor` v2.
 - Añadir resumen de salud del sistema.
-- Añadir logs en `~/.local/share/archtower/logs`.
+- Añadir rotación de Logs
 - Documentar instalación base.
 
 ## Prioridad media

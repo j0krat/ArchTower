@@ -1,0 +1,16 @@
+# Editors
+.vscode/
+.idea/
+
+# Vim
+*.swp
+*~
+
+# Python
+__pycache__/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp

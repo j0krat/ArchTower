@@ -127,7 +127,7 @@ Muestra la versión instalada de ArchTower.
 * [x] CLI
 * [x] Doctor
 * [x] Dotfiles
-* [ ] Logger
+* [x] Logger
 * [ ] Configuración centralizada
 * [ ] Librerías reutilizables
 
