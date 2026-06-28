@@ -26,9 +26,12 @@
 - Revisar servicios importantes
 - Mostrar resumen de salud del sistema
 
-## v1.0.0 - Workstation completa
-- Desarrollo
-- Gaming
-- Música
-- Backups
-- Documentación completa
+## v0.5.0 - Instalación y Setup inicial
+- install.sh
+- Launcher global
+- archtower setup
+- Perfil study
+- Perfil gaming
+- Perfil hybrid
+- Perfil custom
+- Detección inicial de GPU

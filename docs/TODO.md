@@ -2,9 +2,9 @@
 
 ## Prioridad alta
 - Mejorar `archtower doctor` v2.
-- Añadir resumen de salud del sistema.
-- Añadir rotación de Logs
-- Documentar instalación base.
+- Crear `TESTING.md`.
+- Mejorar detección de múltiples GPUs.
+- Crear `uninstall.sh`.
 
 ## Prioridad media
 - Crear `archtower update`.
@@ -13,9 +13,7 @@
 - Configurar Zsh.
 
 ## Prioridad futura
-- Docker.
-- Python con uv.
-- Gaming.
-- Audio profesional.
 - Backups.
 - Snapshots.
+- Audio profesional.
+- Gaming avanzado.

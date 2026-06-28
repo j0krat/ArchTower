@@ -1,5 +1,14 @@
 # ArchTower Changelog
 
+## v0.5.0-alpha
+- Se agregó `install.sh`.
+- Se agregó `archtower setup`.
+- Se agregaron perfiles iniciales de setup.
+- Se agregó detección genérica de GPU.
+- Se añadieron assets/capturas al README.
+- Se corrigieron bugs encontrados en QA usando otro equipo.
+- Se mejoró la instalación global mediante launcher.
+
 ## v0.4.0-alpha
 
 - Refactorización completa de la CLI.
