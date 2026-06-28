@@ -49,3 +49,13 @@ section() {
 separator() {
     printf '%*s\n' "$(tput cols 2>/dev/null || echo 50)" '' | tr ' ' '─'
 }
+
+result() {
+    echo
+    separator
+    echo -e "${CYAN}${BOLD}Health Score${RESET}"
+    echo
+    echo -e "${GREEN}${BOLD}$1/100${RESET}"
+    echo
+    echo "$2"
+}
