@@ -1,220 +1,243 @@
-#ArchTower
+# ArchTower
 
-> *A trustworthy, documented and reproducible Arch Linux workstation.*
+> **Build your Arch Linux workstation with confidence.**
 
-ArchTower no es una distribución de Linux.
+ArchTower es un toolkit modular para Arch Linux diseñado para construir, mantener y documentar una workstation de forma clara, confiable y reproducible.
 
-No es un reemplazo para Arch.
-
-No es un conjunto de scripts sin organización.
-
-ArchTower es un proyecto cuyo objetivo es construir una estación de trabajo basada en Arch Linux que sea **confiable, documentada, reproducible y cómoda**, sin perder la filosofía de Arch.
+Este proyecto nació como una reinstalación de Arch Linux con un objetivo simple: tener un sistema limpio para estudiar y trabajar. Con el tiempo evolucionó hasta convertirse en una colección de herramientas enfocadas en facilitar el mantenimiento diario de una instalación de Arch Linux sin perder de vista su filosofía.
 
 ---
 
-# ¿Por qué existe?
+# Características
 
-Con el tiempo descubrí que mantener una instalación de Arch Linux no consiste únicamente en instalar paquetes.
-
-También implica:
-
-* Documentar decisiones.
-* Automatizar tareas repetitivas.
-* Mantener una estructura limpia.
-* Poder reconstruir el sistema desde cero.
-* Entender cada cambio realizado.
-
-ArchTower nace para resolver ese problema.
+* Arquitectura modular.
+* CLI sencilla y extensible.
+* Sistema de diagnósticos.
+* Registro de eventos (logs).
+* Documentación integrada.
+* Filosofía Open Source.
+* Pensado para aprender, no solo automatizar.
 
 ---
 
-# Filosofía
+# Capturas
 
-ArchTower sigue algunos principios muy simples.
+## ArchTower Doctor
 
-## Seguridad antes que velocidad
-
-Nunca debe ejecutar acciones destructivas sin informar al usuario.
-
----
-
-## Transparencia
-
-Cada comando debe indicar claramente qué está haciendo.
-
-Nada de "magia".
-
----
-
-## Automatizar sin esconder
-
-ArchTower automatiza tareas repetitivas.
-
-No intenta ocultar cómo funciona Arch Linux.
-
----
-
-## Repos oficiales primero
-
-Siempre que sea posible se utilizan los repositorios oficiales.
-
-El AUR se utiliza únicamente cuando aporta un beneficio claro.
-
----
-
-## La documentación es parte del software
-
-Cada decisión importante queda documentada.
-
-No solo importa que algo funcione.
-
-También importa entender por qué funciona.
-
----
-
-# Estado del proyecto
-
-Actualmente ArchTower se encuentra en desarrollo activo.
-
-Versión actual:
-
-```
-v0.4.0-alpha
-```
-
----
-
-# Funciones actuales
-
-```bash
-archtower info
-```
-
-Muestra información general del sistema.
-
----
+Comprueba rápidamente el estado general del sistema y del entorno ArchTower.
 
 ```bash
 archtower doctor
 ```
 
-Realiza un diagnóstico del sistema.
-
-Actualmente verifica:
-
-* Conectividad
-* Estado de Git
-* NVIDIA
-* Espacio disponible
-* Memoria
-* Actualizaciones pendientes
-* Estado de los dotfiles
+![ArchTower Doctor](assets/archtower-doctor.png)
 
 ---
+
+## ArchTower Info
+
+Muestra un resumen del proyecto y del entorno actual.
+
+```bash
+archtower info
+```
+
+![ArchTower Info](assets/archtower-info.png)
+
+---
+
+## ArchTower Logs
+
+Consulta el historial de ejecuciones de ArchTower.
+
+```bash
+archtower logs
+```
+
+![ArchTower Logs](assets/archtower-logs.png)
+
+---
+
+## ArchTower Version
+
+Muestra la versión instalada.
 
 ```bash
 archtower version
 ```
 
-Muestra la versión instalada de ArchTower.
+![ArchTower Version](assets/archtower-archtower-version.png)
 
 ---
 
-# Roadmap
+# Instalación
 
-## Core
+Clona el repositorio:
 
-* [x] CLI
-* [x] Doctor
-* [x] Dotfiles
-* [x] Logger
-* [ ] Configuración centralizada
-* [ ] Librerías reutilizables
+```bash
+git clone git@github.com:j0krat/ArchTower.git
+```
 
----
+Entra al proyecto:
 
-## Sistema
+```bash
+cd ArchTower
+```
 
-* [ ] Update inteligente
-* [ ] Limpieza segura
-* [ ] Backups
-* [ ] Snapshots
+Concede permisos de ejecución al comando principal si fuese necesario:
 
----
+```bash
+chmod +x scripts/archtower
+```
 
-## Desarrollo
+Puedes ejecutar ArchTower directamente:
 
-* [ ] Docker
-* [ ] Python
-* [ ] uv
-* [ ] Git avanzado
+```bash
+./scripts/archtower doctor
+```
 
----
+O crear un enlace simbólico para utilizar el comando desde cualquier ubicación:
 
-## Gaming
+```bash
+sudo ln -s "$PWD/scripts/archtower" /usr/local/bin/archtower
+```
 
-* [ ] Steam
-* [ ] Proton
-* [ ] MangoHud
-* [ ] GameMode
+Comprueba que todo funciona:
 
----
-
-## Música
-
-* [ ] PipeWire
-* [ ] REAPER
-* [ ] Plugins
-* [ ] Baja latencia
+```bash
+archtower version
+```
 
 ---
 
-# Estructura
+# Primeros pasos
+
+Una vez instalado, puedes comenzar utilizando:
+
+```bash
+archtower version
+```
+
+```bash
+archtower info
+```
+
+```bash
+archtower doctor
+```
+
+```bash
+archtower logs
+```
+
+---
+
+# Comandos disponibles
+
+| Comando             | Descripción                                        |
+| ------------------- | -------------------------------------------------- |
+| `archtower doctor`  | Comprueba el estado general del sistema.           |
+| `archtower info`    | Muestra información del proyecto y la instalación. |
+| `archtower logs`    | Visualiza los registros generados por ArchTower.   |
+| `archtower version` | Muestra la versión instalada.                      |
+
+---
+
+# Arquitectura
+
+ArchTower sigue una arquitectura modular.
 
 ```
-dotfiles/
-
-docs/
 scripts/
-bash/
-git/
-kitty/
-
-Notes/
-Projects/
-Labs/
+│
+├── archtower
+│
+├── commands/
+│   ├── doctor.sh
+│   ├── info.sh
+│   ├── logs.sh
+│   └── version.sh
+│
+├── lib/
+│   ├── config.sh
+│   ├── colors.sh
+│   ├── logger.sh
+│   └── utils.sh
+│
+└── tests/
 ```
+
+Cada comando tiene una única responsabilidad y reutiliza las librerías compartidas para mantener el proyecto limpio y fácil de mantener.
 
 ---
 
-# Objetivos
+# Documentación
 
-ArchTower busca que el usuario pueda decir:
+La documentación completa se encuentra en la carpeta `docs/`.
 
-* Sé por qué está instalado cada paquete.
-* Sé cómo reconstruir mi sistema.
-* Sé qué hace cada comando.
-* Confío en mi estación de trabajo.
+* ARCHITECTURE.md
+* CHANGELOG.md
+* CONTRIBUTING.md
+* MANIFESTO.md
+* ROADMAP.md
+* TODO.md
+
+---
+
+# Filosofía
+
+ArchTower se construye siguiendo cinco principios fundamentales.
+
+* Claridad.
+* Confianza.
+* Simplicidad.
+* Reproducibilidad.
+* Aprendizaje.
+
+El objetivo no es reemplazar Arch Linux.
+
+El objetivo es acompañar al usuario mientras aprende y mantiene su sistema.
+
+---
+
+# Estado del proyecto
+
+**Versión:** v0.4.0-alpha
+
+**Estado:** Desarrollo activo.
+
+ArchTower continúa evolucionando y nuevas funcionalidades serán incorporadas en futuras versiones.
 
 ---
 
 # Contribuir
 
-Actualmente ArchTower es un proyecto personal.
+Si deseas contribuir al proyecto, consulta:
 
-Sin embargo, cualquier sugerencia, discusión o mejora es bienvenida.
+```
+docs/CONTRIBUTING.md
+```
 
----
-
-# Autor
-
-Desarrollado por **Joaquín "j0krat" Vejar**.
-
-Con mucho café, Linux, curiosidad y ganas de Aprender.
+Toda ayuda es bienvenida siempre que respete la filosofía del proyecto.
 
 ---
 
 # Licencia
 
-En evaluación.
+Este proyecto está distribuido bajo la licencia MIT.
 
+Consulta el archivo `LICENSE` para más información.
+
+---
+
+# Agradecimientos
+
+ArchTower existe gracias a la curiosidad por aprender, al deseo de construir herramientas útiles y a la convicción de que comprender cómo funciona un sistema siempre será más valioso que simplemente utilizarlo.
+
+Si este proyecto te ayudó a aprender un poco más sobre Arch Linux, Bash o ingeniería de software, entonces ya ha cumplido uno de sus principales objetivos.
+
+---
+
+**No construimos scripts. Construimos confianza.**
+
+**— Joaquín "j0krat" Vejar**
