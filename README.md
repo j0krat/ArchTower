@@ -20,6 +20,15 @@ Este proyecto nació como una reinstalación de Arch Linux con un objetivo simpl
 
 ---
 
+## Estado del proyecto
+
+| Estado | Valor |
+|---------|--------|
+| Versión | v0.4.0-alpha |
+| Plataforma | Arch Linux |
+| Licencia | MIT |
+| Desarrollo | Activo |
+
 # Capturas
 
 ## ArchTower Doctor
@@ -77,6 +86,21 @@ Clona el repositorio:
 ```bash
 git clone https://github.com/j0krat/ArchTower.git
 ```
+
+## Requisitos
+
+Actualmente ArchTower está diseñado para sistemas Arch Linux.
+
+Requisitos mínimos:
+
+- Bash
+- Git
+- Sistema basado en Arch Linux
+
+Dependencias opcionales:
+
+- tree
+- less
 
 Entra al proyecto:
 
