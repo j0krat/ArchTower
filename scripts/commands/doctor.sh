@@ -6,6 +6,8 @@ source "$SCRIPT_DIR/../lib/config.sh"
 source "$SCRIPT_DIR/../lib/colors.sh"
 source "$SCRIPT_DIR/../lib/logger.sh"
 source "$SCRIPT_DIR/../lib/utils.sh"
+source "$SCRIPT_DIR/../lib/utils.sh"
+source "$SCRIPT_DIR/../lib/gpu.sh"
 
 score=100
 
@@ -33,14 +35,24 @@ network_checks() {
 }
 
 driver_checks() {
-    section "Drivers"
+    section "GPU"
 
-    if check_nvidia; then
-        success "NVIDIA"
-	detail "  Driver detectado"
+    success "Fabricante"
+    detail "$(detect_gpu_vendor)"
+
+    success "Modelo"
+    detail "$(detect_gpu_model)"
+
+    local driver_status
+    driver_status="$(check_gpu_driver)"
+
+    if [[ "$driver_status" == "OK" ]]; then
+        success "Driver"
+        detail "OK"
     else
-        warning "NVIDIA"
-	hint "Comprueba el controlador instalado"
+        warning "Driver"
+        detail "$driver_status"
+        hint "Revisa los controladores gráficos instalados."
         ((score-=10))
     fi
 }
