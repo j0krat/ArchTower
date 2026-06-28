@@ -11,6 +11,7 @@ if [[ -z "$COMMAND" ]]; then
     echo "Uso:"
     echo "  archtower info"
     echo "  archtower doctor"
+    echo "  archtower logs"
     echo "  archtower version"
     exit 0
 fi
@@ -26,6 +27,7 @@ else
     echo "Uso:"
     echo "  archtower info"
     echo "  archtower doctor"
+    echo "  archtower logs"
     echo "  archtower version"
     exit 1
 fi
