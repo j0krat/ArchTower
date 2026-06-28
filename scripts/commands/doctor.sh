@@ -48,9 +48,17 @@ project_checks() {
 
 title "ArchTower Doctor"
 
+log_info "Doctor Iniciado"
+
+title "Inicio"
+
 system_checks
 network_checks
 driver_checks
 project_checks
+
+title "Fin"
+
+log_info "Doctor Finalizado con score $score"
 
 result "$score" "Sistema Saludable"
