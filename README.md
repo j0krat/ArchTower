@@ -75,7 +75,7 @@ archtower version
 Clona el repositorio:
 
 ```bash
-git clone git@github.com:j0krat/ArchTower.git
+git clone https://github.com/j0krat/ArchTower.git
 ```
 
 Entra al proyecto:
