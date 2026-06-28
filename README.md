@@ -79,72 +79,44 @@ archtower version
 
 ---
 
-# Instalación
-
-Clona el repositorio:
-
-```bash
-git clone https://github.com/j0krat/ArchTower.git
-```
-
 ## Requisitos
 
-Actualmente ArchTower está diseñado para sistemas Arch Linux.
+Actualmente ArchTower está diseñado para sistemas basados en Arch Linux.
 
 Requisitos mínimos:
 
 - Bash
 - Git
-- Sistema basado en Arch Linux
 
-Dependencias opcionales:
+Dependencias recomendadas:
 
 - tree
 - less
 
-Entra al proyecto:
+## Clonar el repositorio
 
 ```bash
+git clone https://github.com/j0krat/ArchTower.git
 cd ArchTower
 ```
 
-Concede permisos de ejecución al comando principal si fuese necesario:
+## Instalar ArchTower
+
+Ejecuta el instalador oficial:
 
 ```bash
-chmod +x scripts/archtower
+chmod +x scripts/install.sh
+./scripts/install.sh
 ```
 
-Puedes ejecutar ArchTower directamente:
+El instalador verificará las dependencias necesarias, creará el lanzador global y comprobará que ArchTower quedó instalado correctamente.
 
-```bash
-./scripts/archtower doctor
-```
-
-Si deseas ejecutar `archtower` desde cualquier ubicación del sistema sin escribir la ruta completa, puedes crear un lanzador global:
-
-```bash
-sudo tee /usr/local/bin/archtower > /dev/null <<EOF
-#!/usr/bin/env bash
-exec "$PWD/scripts/archtower" "\$@"
-EOF
-
-sudo chmod +x /usr/local/bin/archtower
-```
-
-Comprueba que todo funciona:
+## Verificar la instalación
 
 ```bash
 archtower version
 ```
 
-A partir de ese momento podrás ejecutar comandos como:
-
-```bash
-archtower doctor
-archtower info
-archtower logs
-archtower version
-```
 ---
 
 # Comandos disponibles
@@ -166,12 +138,14 @@ ArchTower sigue una arquitectura modular.
 scripts/
 │
 ├── archtower
-│
+|
 ├── commands/
 │   ├── doctor.sh
 │   ├── info.sh
 │   ├── logs.sh
 │   └── version.sh
+│
+├── install.sh
 │
 ├── lib/
 │   ├── config.sh
